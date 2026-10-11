@@ -70,11 +70,11 @@ flowchart LR
 
 ## What the data has shown so far
 
-Each claim below was measured on the project's own data before any feature built on it was kept.
+Each claim below was measured on the project's own data before any feature built on it was kept. Method and full tables: [`analysis/FINDINGS.md`](analysis/FINDINGS.md). The labeled dataset and a 30-trade sample: [`analysis/DATASET.md`](analysis/DATASET.md).
 
 | Question | Data | Result |
 |---|---|---|
-| Does RSI divergence alone give an edge? | 20 coins · ~4 years daily, ~1 year 4h · confirmation delay 1/2/3/5 bars | No. Win rate 10 bars later ≈ 50 %, mean return ≈ 0 or negative. RSI is kept only as a confirmation feature. |
+| Does RSI divergence alone give an edge? | 20 coins · ~4 years daily, ~1 year 4h · confirmation delay 1/2/3/5 bars | No. Win rate 10 bars later 48–58 %, mean return negative for every delay (−4.9 % to −0.6 %). RSI is kept only as a confirmation feature. |
 | Can candle colour approximate volume delta (CVD)? | Binance spot, 30 days hourly, vs. real taker data | Correlation 0.51–0.65. Over multiple days the sign was even reversed for BTC. Switched to real taker volume. |
 | Spot or futures CVD for divergences? | Binance taker, 15 coins, 4h, ~1.4 years | Spot divergence pointed in the right direction slightly more often than futures. Futures-only divergence was the weakest. Spot is the default. |
 | Do the baseline rule sets have an edge? | 411 backtest trades, learning vs. test split | Not yet. They beat 76 % of random entries; 80 % is required. That is the reason for the labeling and meta-labeling work. |
@@ -83,7 +83,7 @@ Each claim below was measured on the project's own data before any feature built
 
 The plan goes one step at a time. A step is kept only if it holds up on out-of-sample data.
 
-1. **Label quality**: finish the unlocked setups (in progress, 73 / 411 reviewed).
+1. **Label quality**: finish the unlocked setups (in progress, 73 / 411 reviewed). See [`analysis/DATASET.md`](analysis/DATASET.md).
 2. **Exploratory analysis**: which features separate *take* from *skip*: trend, liquidity sweep, RSI divergence, OTE zone, higher-timeframe alignment.
 3. **Baseline models**: logistic regression, then gradient boosting (LightGBM). Class weights for imbalance, SHAP for explanations.
 4. **Validation**: purged walk-forward, then the locked exam period.
